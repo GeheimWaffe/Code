@@ -60,7 +60,4 @@ with open('techtrack100.csv', 'w') as f_output:
     csv_output = csv.writer(f_output)
     csv_output.writerows(rows)
 
-# Endresult. The thing works perfectly.
-with open('secondtechtrack.csv', 'w') as f_output:
-    csv_output = csv.writer(f_output)
-    csv_output.writerows(rows)
+# Je supprime tout ça, ce 'nest pas bon.'
