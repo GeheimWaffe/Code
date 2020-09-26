@@ -4,11 +4,19 @@
 import time
 from selenium import webdriver
 from selenium.webdriver import Firefox
+from selenium.webdriver import FirefoxProfile
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-driver = Firefox(executable_path='/opt/WebDriver/bin/geckodriver')
+# Create a profile for automatic download
+fxProfile = FirefoxProfile()
 
+fxProfile.set_preference('browser.download.folderList',2)
+fxProfile.set_preference('browser.download.manager.showWhenStarting', False)
+fxProfile.set_preference('browser.download.dir','~/home/Documents/')
+fxProfile.set_preference('browser.helperApps.neverAsk.saveToDisk','text/csv/xlsx')
+
+driver = Firefox(firefox_profile=fxProfile, executable_path='/opt/WebDriver/bin/geckodriver')
 
 # Maximize
 driver.maximize_window()
@@ -65,5 +73,6 @@ for el in driver.find_elements_by_class_name('label.hasIcon'):
         print('*** Preparing data export !')
         el.click()
 
-        # Export
+        # Validate the export
+        time.sleep(1)
         driver.find_element_by_class_name('primary').click()
