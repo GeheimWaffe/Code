@@ -13,8 +13,9 @@ fxProfile = FirefoxProfile()
 
 fxProfile.set_preference('browser.download.folderList',2)
 fxProfile.set_preference('browser.download.manager.showWhenStarting', False)
-fxProfile.set_preference('browser.download.dir','~/home/Documents/')
-fxProfile.set_preference('browser.helperApps.neverAsk.saveToDisk','text/csv/xlsx')
+fxProfile.set_preference('browser.download.dir','~/Documents/')
+# Works ! Note that the MIME type has to be exactly right and correspond to xlsx
+fxProfile.set_preference('browser.helperApps.neverAsk.saveToDisk','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 driver = Firefox(firefox_profile=fxProfile, executable_path='/opt/WebDriver/bin/geckodriver')
 
