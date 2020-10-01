@@ -87,6 +87,7 @@ def exportReportingGestion(targetFolder, username, userpassword, executablepath)
 # *** geckodriver path for Ubuntu
 # exPath = '/opt/WebDriver/bin/geckodriver'
 # *** geckodriver path for Windows
+exPath = 'C:/Users/4090DQ/OneDrive - GRTgaz/Développement/python/geckodriver/geckodriver.exe'
 
 # Target Path
 # Ubuntu
@@ -94,7 +95,6 @@ tgPath = '~/Documents/'
 # Windows
 tgpath = 'C:\\Users\\4090DQ\\GRTgaz\\Pilotage Budget & Ressources DSI - General'
 
-exPath = 'C:/Users/4090DQ/OneDrive - GRTgaz/Développement/python/geckodriver/geckodriver.exe'
 un = str(raw_input('Identifiant FARO ? \n'))
 un += '@tera.infragaz.com'
 up = str(raw_input('User password ? \n'))
