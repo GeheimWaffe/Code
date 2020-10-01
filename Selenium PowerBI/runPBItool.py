@@ -2,15 +2,18 @@
 #*** Author: Vincent Scherrer
 
 import time
+import io
 from selenium import webdriver
 from selenium.webdriver import Firefox
 from selenium.webdriver import FirefoxProfile
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-def exportReportingGestion(targetFolder):
-    """ Function which enables the download of the detailed reporting gestion table"""
+def exportReportingGestion(targetFolder, username, userpassword):
+    """ Function which enables the download of the detailed reporting gestion table
+    :target Folder : the folder to which the extract should be downloaded"""
     # Create a profile for automatic download
+    # Note : to find the current user profile, type in
     fxProfile = FirefoxProfile()
 
     fxProfile.set_preference('browser.download.folderList',2)
@@ -29,7 +32,7 @@ def exportReportingGestion(targetFolder):
     driver.get(url)
 
     # Enter user name
-    driver.find_element_by_id('i0116').send_keys('4090DQ@tera.infragaz.com')
+    driver.find_element_by_id('i0116').send_keys(username)
 
     # Validate
     driver.find_element_by_id('idSIButton9').click()
@@ -38,7 +41,7 @@ def exportReportingGestion(targetFolder):
     time.sleep(2)
 
     # Enter password
-    driver.find_element_by_id('i0118').send_keys('2031Vinc3nt')
+    driver.find_element_by_id('i0118').send_keys(userpassword)
     # Validate
     driver.find_element_by_id('idSIButton9').click()
 
@@ -81,4 +84,7 @@ def exportReportingGestion(targetFolder):
             driver.find_element_by_class_name('primary').click()
 
 # Main method
-exportReportingGestion('~/Documents/')
+un = str(raw_input('Identifiant FARO ? \n'))
+un += '@tera.infragaz.com'
+up = str(raw_input('User password ? \n'))
+exportReportingGestion('~/Documents/', un, up)
