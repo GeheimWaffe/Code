@@ -3,6 +3,7 @@
 
 import time
 import io
+import sys
 from selenium import webdriver
 from selenium.webdriver import Firefox
 from selenium.webdriver import FirefoxProfile
@@ -83,19 +84,27 @@ def exportReportingGestion(targetFolder, username, userpassword, executablepath)
             time.sleep(1)
             driver.find_element_by_class_name('primary').click()
 
+            break
+
 # Main method
 # *** geckodriver path for Ubuntu
 # exPath = '/opt/WebDriver/bin/geckodriver'
 # *** geckodriver path for Windows
-exPath = 'C:/Users/4090DQ/OneDrive - GRTgaz/Développement/python/geckodriver/geckodriver.exe'
+# exPath = 'C:/Users/4090DQ/OneDrive - GRTgaz/Developpement/python/geckodriver/geckodriver.exe'
 
 # Target Path
 # Ubuntu
-tgPath = '~/Documents/'
+# tgPath = '~/Documents/'
 # Windows
-tgpath = 'C:\\Users\\4090DQ\\GRTgaz\\Pilotage Budget & Ressources DSI - General'
+# tgpath = 'C:\\Users\\4090DQ\\GRTgaz\\Pilotage Budget & Ressources DSI - General'
 
-un = str(raw_input('Identifiant FARO ? \n'))
-un += '@tera.infragaz.com'
-up = str(raw_input('User password ? \n'))
+# un = str(raw_input('Identifiant FARO ? \n'))
+# up = str(raw_input('User password ? \n'))
+
+#retriveve the inline parameters
+args = sys.argv
+un = str(args[1]) + '@tera.infragaz.com'
+up = str(args[2])
+tgPath = str(args[3])
+exPath = str(args[4])
 exportReportingGestion(tgPath, un, up, exPath)
